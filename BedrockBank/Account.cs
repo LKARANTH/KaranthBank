@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace BedrockBank
 {
+    enum AccountTypes
+    {
+        Checking,
+        Savings
+    }
+
     class Account
     {
         #region Static Varialbes
@@ -22,8 +28,8 @@ namespace BedrockBank
         /// </summary>
         public string EmailAddress { get; set; }
 
-        public decimal Balance { get;  private set; }
-        public string TypeOfAccount { get; set; }
+        public decimal Balance { get; private set; }
+        public AccountTypes TypeOfAccount { get; set; }
         #endregion
 
         #region Constructor
@@ -32,10 +38,19 @@ namespace BedrockBank
             //lastAccountNumber ++1
             AccountNumber = ++lastAccoubtNumber;
         }
+        //public Account(string typeOfAccount) : this()
+        //{
+        //    TypeOfAccount = typeOfAccount;
+        //}
+        //public Account(string emailAddress, string typeOfAccount) : this(typeOfAccount) 
+        //{
+        //EmailAddress = emailAddress;
+        //}
+
         #endregion
 
         #region Methods
-        public void Deopsit(decimal amount)
+        public void Deposit(decimal amount)
         {
             //Balance = Balance + amount;
             Balance += amount;
