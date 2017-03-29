@@ -8,12 +8,12 @@ namespace BedrockBank
 {
     static class Bank
     {
-        public static Account CreateAccount(string emailAddress, string typeOfAccount,decimal amount)
+        public static Account CreateAccount(string emailAddress, AccountTypes typeOfAccount,decimal amount)
         {
             var account = new Account
             {
                 EmailAddress = emailAddress,
-                TypeOfAccount = AccountTypes
+                TypeOfAccount = typeOfAccount
             };
             account.Deposit(amount);
             return account;
