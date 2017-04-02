@@ -42,9 +42,9 @@ namespace BedrockBank
         //{
         //    TypeOfAccount = typeOfAccount;
         //}
-        //public Account(string emailAddress, string typeOfAccount) : this(typeOfAccount) 
+        //public Account(string emailAddress, string typeOfAccount) : this(typeOfAccount)
         //{
-        //EmailAddress = emailAddress;
+        //    EmailAddress = emailAddress;
         //}
 
         #endregion
