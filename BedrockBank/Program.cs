@@ -12,11 +12,8 @@ namespace BedrockBank
         {
 
             Console.WriteLine("************Welcome to Bedrock Bank!***********");
-
             while (true)
             {
-
-
                 Console.WriteLine("Please select from the following option");
                 Console.WriteLine("0.Exit");
                 Console.WriteLine("1. Create an account");
@@ -35,17 +32,17 @@ namespace BedrockBank
                         var emailAddress = Console.ReadLine();
                         Console.WriteLine("What type of account you need?");
                         var accountTypes = Enum.GetNames(typeof(AccountTypes));
-                        for (var i = 0; i < accountTypes.Length ; i++)
+                        for (var i = 0; i < accountTypes.Length; i++)
                         {
-                            Console.WriteLine($"{i+1} . {accountTypes[i]}");
+                            Console.WriteLine($"{i + 1} . {accountTypes[i]}");
                         }
                         var typeOfAccount = Convert.ToInt32(Console.ReadLine());
-                        var account1 = Bank.CreateAccount(emailAddress, (AccountTypes)(typeOfAccount-1), 0.0M);
+                        var account1 = Bank.CreateAccount(emailAddress, (AccountTypes)(typeOfAccount - 1), 0.0M);
                         Console.WriteLine($"Accountnumber: {account1.AccountNumber}, EmailAddress: {account1.EmailAddress}, TypeOfAccount: {account1.TypeOfAccount}, Balance: {account1.Balance:C}");
                         break;
                     case "2":
                         PrintAllAccounts();
-                        Console.Write("Pick an account number to deposit");
+                        Console.Write("Pick an account number to deposit: ");
                         var accountNumber = Convert.ToInt32(Console.ReadLine());
                         Console.Write("Amount to deposit: ");
                         var amount = Convert.ToDecimal(Console.ReadLine());
