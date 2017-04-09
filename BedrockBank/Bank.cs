@@ -9,6 +9,7 @@ namespace BedrockBank
     static class Bank
     {
         private static List<Account> accounts = new List<Account>();
+        private static  BankModel db = new BankModel();
 
         public static Account CreateAccount(string emailAddress, AccountTypes typeOfAccount,decimal amount)
         {
@@ -18,7 +19,9 @@ namespace BedrockBank
                 TypeOfAccount = typeOfAccount
             };
             account.Deposit(amount);
-            accounts.Add(account);
+            //accounts.Add(account);
+            db.Accounts.Add(account);
+            db.SaveChanges();
             return account;
         }
         public static List<Account> GetAllAccounts()
@@ -33,6 +36,5 @@ namespace BedrockBank
                 account.Deposit(amount);
             }
         }
-
     }
 }

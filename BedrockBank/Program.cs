@@ -47,7 +47,7 @@ namespace BedrockBank
                         Console.Write("Amount to deposit: ");
                         var amount = Convert.ToDecimal(Console.ReadLine());
                         Bank.Deposit(accountNumber, amount);
-                        break;
+                    break;
                     case "3":
                     case "4":
                         PrintAllAccounts();
