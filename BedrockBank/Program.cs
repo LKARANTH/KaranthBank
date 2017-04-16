@@ -36,9 +36,16 @@ namespace BedrockBank
                         {
                             Console.WriteLine($"{i + 1} . {accountTypes[i]}");
                         }
-                        var typeOfAccount = Convert.ToInt32(Console.ReadLine());
-                        var account1 = Bank.CreateAccount(emailAddress, (AccountTypes)(typeOfAccount - 1), 0.0M);
-                        Console.WriteLine($"Accountnumber: {account1.AccountNumber}, EmailAddress: {account1.EmailAddress}, TypeOfAccount: {account1.TypeOfAccount}, Balance: {account1.Balance:C}");
+                        try
+                        {
+                            var typeOfAccount = Convert.ToInt32(Console.ReadLine());
+                            var account1 = Bank.CreateAccount(emailAddress, (AccountTypes)(typeOfAccount - 1), 0.0M);
+                            Console.WriteLine($"Accountnumber: {account1.AccountNumber}, EmailAddress: {account1.EmailAddress}, TypeOfAccount: {account1.TypeOfAccount}, Balance: {account1.Balance:C}");
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Invalid account type. Taking you back to the main emu to tru again. ");
+                        }
                         break;
                     case "2":
                         PrintAllAccounts();
@@ -53,6 +60,7 @@ namespace BedrockBank
                         PrintAllAccounts();
                         break;
                     default:
+                        Console.WriteLine("Invalid option - please try again!'");
                         break;
                 }
             }

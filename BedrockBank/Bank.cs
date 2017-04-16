@@ -8,13 +8,23 @@ namespace BedrockBank
 {
     static class Bank
     {
-        private static List<Account> accounts = new List<Account>();
+       // private static List<Account> accounts = new List<Account>();
         private static  BankModel db = new BankModel();
 
         public static Account CreateAccount(string emailAddress, AccountTypes typeOfAccount,decimal amount)
         {
-            var account = new Account
+            if (string.IsNullOrEmpty(emailAddress))
             {
+                throw new ArgumentNullException("Email Addree cannot be empty. ");
+            }
+            if (amount < 0.0M)
+            {
+                throw new ArgumentException("Amount cannot be less thank 0");
+            }
+            
+            
+            var account = new Account
+            { 
                 EmailAddress = emailAddress,
                 TypeOfAccount = typeOfAccount
             };
@@ -26,11 +36,12 @@ namespace BedrockBank
         }
         public static List<Account> GetAllAccounts()
         {
-            return accounts;
+            return db.Accounts.ToList();
+            
         }
         public static void Deposit(int accountNumber, decimal amount)
         {
-            var account = accounts.Where(a => a.AccountNumber == accountNumber).FirstOrDefault();
+            var account = db.Accounts.Where(a => a.AccountNumber == accountNumber).FirstOrDefault();
             if (account != null)
             {
                 account.Deposit(amount);
