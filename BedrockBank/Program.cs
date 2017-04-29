@@ -42,7 +42,19 @@ namespace BedrockBank
                             var account1 = Bank.CreateAccount(emailAddress,(typeOfAccount - 1), 0.0M);
                             Console.WriteLine($"Accountnumber: {account1.AccountNumber}, EmailAddress: {account1.EmailAddress}, TypeOfAccount: {account1.TypeOfAccount}, Balance: {account1.Balance:C}");
                         }
-                        catch
+                        catch(ArgumentNullException ane)
+                        {
+                            Console.WriteLine($"Account creation failed: { ane.Message}");
+                        }
+                        catch(ArgumentException ae)
+                        {
+                            Console.WriteLine($"Account creation failed: { ae.Message}");
+                        }
+                        catch (FormatException)
+                        {
+                            Console.WriteLine("Please select the numbers from the account type list. ");
+                        }
+                        catch(Exception)
                         {
                             Console.WriteLine("Invalid account type. Taking you back to the main menu to try again. ");
                         }

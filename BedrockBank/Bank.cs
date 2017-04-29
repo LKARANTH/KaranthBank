@@ -48,7 +48,10 @@ namespace BedrockBank
             if (account != null)
             {
                 account.Deposit(amount);
+                db.SaveChanges();
+                CreateTransaction("Deposit", TransactionType.Credit, amount,)
             }
+
         }
         public static void Withdrae(int accountNumber, decimal amount)
         {
@@ -56,7 +59,21 @@ namespace BedrockBank
             if (account != null)
             {
                 account.Withdraw(amount);
+                db.SaveChanges();
             }
+        }
+        private static void CreateTransaction(string description, TransactionType typeOfTransaction, decimal amount, int accountNumber)
+        {
+            var transaction = new Transaction
+            {
+                TransactionDate = DateTime.Now,
+                Description = description,
+                TypeOfTransaction = typeOfTransaction,
+                Amount = amount,
+                AccountNumber = accountNumber
+            };
+            db.Transactions.Add(transaction);
+            db.SaveChanges();
         }
     }
 }
