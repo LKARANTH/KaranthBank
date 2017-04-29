@@ -20,6 +20,7 @@ namespace BedrockBank
                 Console.WriteLine("2.Deposit");
                 Console.WriteLine("3.Withdraw");
                 Console.WriteLine("4. Prinat all accounts");
+                Console.WriteLine("5. Prinat all transactions");
                 var option = Console.ReadLine();
                 switch (option)
                 {
@@ -68,8 +69,21 @@ namespace BedrockBank
                         Bank.Deposit(accountNumber, amount);
                     break;
                     case "3":
+                        PrintAllAccounts();
+                        Console.Write("Pick an account number to withdraw: ");
+                        var accountNumber2 = Convert.ToInt32(Console.ReadLine());
+                        Console.Write("Amount to withdraw: ");
+                        var amount2 = Convert.ToDecimal(Console.ReadLine());
+                        Bank.Deposit(accountNumber2, amount2);
+                        break;
                     case "4":
                         PrintAllAccounts();
+                        break;
+                    case "5":
+                        PrintAllAccounts();
+                        Console.Write("Pick an account number to see transactions: ");
+                        var accountNumber3 = Convert.ToInt32(Console.ReadLine());
+                        PrintAllTransaction(accountNumber3);
                         break;
                     default:
                         Console.WriteLine("Invalid option - please try again!'");
@@ -85,6 +99,15 @@ namespace BedrockBank
             foreach (var account in accounts)
             {
                 Console.WriteLine($"Accountnumber: {account.AccountNumber}, EmailAddress: {account.EmailAddress}, TypeOfAccount: {account.TypeOfAccount}, Balance: {account.Balance:C}");
+            }
+        }
+
+         private static void PrintAllTransaction(int accountNumber)
+        {
+            var tranactions = Bank.GetAllTransactions(accountNumber);
+            foreach (var tran  in tranactions)
+            {
+                Console.WriteLine($"TransactionId: {tran.TransactionID}, TypeOfTransaction: {tran.TypeOfTransaction}, TransactionDate: {tran.TransactionDate}, Amount: {tran.Amount:C}, Description: {tran.Description}");
             }
         }
     }

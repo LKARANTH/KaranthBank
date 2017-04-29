@@ -49,7 +49,7 @@ namespace BedrockBank
             {
                 account.Deposit(amount);
                 db.SaveChanges();
-                CreateTransaction("Deposit", TransactionType.Credit, amount,)
+                CreateTransaction("Deposit", TransactionType.Credit, amount, account.AccountNumber);
             }
 
         }
@@ -60,6 +60,7 @@ namespace BedrockBank
             {
                 account.Withdraw(amount);
                 db.SaveChanges();
+                CreateTransaction("Withdraw", TransactionType.Debit, amount, account.AccountNumber);
             }
         }
         private static void CreateTransaction(string description, TransactionType typeOfTransaction, decimal amount, int accountNumber)
@@ -74,6 +75,11 @@ namespace BedrockBank
             };
             db.Transactions.Add(transaction);
             db.SaveChanges();
+        }
+
+        public static List<Transaction> GetAllTransactions(int accountNumber)
+        {
+           return db.Transactions.Where(t => t.AccountNumber == accountNumber).ToList();
         }
     }
 }

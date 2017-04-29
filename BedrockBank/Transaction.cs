@@ -29,7 +29,6 @@ namespace BedrockBank
         public int AccountNumber { get; set; }
 
         public virtual Account Account { get; set; }
-
-
+        public DateTime TransactionDate { get; internal set; }
     }
 }
