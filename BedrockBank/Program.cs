@@ -44,7 +44,7 @@ namespace BedrockBank
                         }
                         catch
                         {
-                            Console.WriteLine("Invalid account type. Taking you back to the main emu to tru again. ");
+                            Console.WriteLine("Invalid account type. Taking you back to the main menu to try again. ");
                         }
                         break;
                     case "2":
