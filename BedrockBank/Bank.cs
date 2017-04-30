@@ -29,7 +29,8 @@ namespace BedrockBank
             var account = new Account
             { 
                 EmailAddress = emailAddress,
-                TypeOfAccount = (AccountTypes)typeOfAccount
+                TypeOfAccount = (AccountTypes)typeOfAccount,
+                CreatedDate = DateTime.Now
             };
             account.Deposit(amount);
             //accounts.Add(account);

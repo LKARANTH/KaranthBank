@@ -30,7 +30,11 @@ namespace BedrockBank
         /// </summary>
         public string EmailAddress { get; set; }
 
+        [DefaultValue(0.0)]
+
         public decimal Balance { get; set; }
+        
+        public DateTime CreatedDate { get; set; }
         public AccountTypes TypeOfAccount { get; set; }
         public virtual ICollection<Transaction> Transactions { get; set; }
 

@@ -55,9 +55,9 @@ namespace BedrockBank
                         {
                             Console.WriteLine("Please select the numbers from the account type list. ");
                         }
-                        catch(Exception)
+                        catch(Exception ex)
                         {
-                            Console.WriteLine("Invalid account type. Taking you back to the main menu to try again. ");
+                            Console.WriteLine($"Something went wrong. Taking you back to the main menu to try again. - {ex.Message}");
                         }
                         break;
                     case "2":
@@ -92,8 +92,7 @@ namespace BedrockBank
             }
 
         }
-
-        private static void PrintAllAccounts()
+            private static void PrintAllAccounts()
         {
             var accounts = Bank.GetAllAccounts();
             foreach (var account in accounts)
