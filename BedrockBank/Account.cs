@@ -30,7 +30,7 @@ namespace BedrockBank
         /// </summary>
         public string EmailAddress { get; set; }
 
-        [DefaultValue(0.0)]
+
 
         public decimal Balance { get; set; }
         

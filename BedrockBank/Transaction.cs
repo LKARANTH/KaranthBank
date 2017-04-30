@@ -20,7 +20,6 @@ namespace BedrockBank
     {
         [Key]
         public int TransactionID { get; set; }
-        public DateTime TrasactionDate { get; set; }
         public string Description { get; set; }
         public TransactionType TypeOfTransaction{ get; set; }
         public decimal Amount{ get; set; }
