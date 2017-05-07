@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace BedrockBank
 {
-    static class Bank
+    public static class Bank
     {
        // private static List<Account> accounts = new List<Account>();
-        private static  BankModel db = new BankModel();
+        public static  BankModel db = new BankModel();
 
         public static Account CreateAccount(string emailAddress, int typeOfAccount,decimal amount)
         {

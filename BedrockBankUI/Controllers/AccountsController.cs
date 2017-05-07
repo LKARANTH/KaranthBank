@@ -17,7 +17,7 @@ namespace BedrockBankUI.Controllers
         // GET: Accounts
         public ActionResult Index()
         {
-            return View(db.Accounts.ToList());
+            return View(Bank.GetAllAccounts(HTTP));
         }
 
         // GET: Accounts/Details/5
