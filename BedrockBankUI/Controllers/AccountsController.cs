@@ -15,9 +15,10 @@ namespace BedrockBankUI.Controllers
         private BankModel db = new BankModel();
 
         // GET: Accounts
+        [Authorize]
         public ActionResult Index()
         {
-            return View(Bank.GetAllAccounts(HTTP));
+            return View(Bank.GetAllAccounts(HttpContext.User.Identity.Name));
         }
 
         // GET: Accounts/Details/5
@@ -50,6 +51,7 @@ namespace BedrockBankUI.Controllers
         {
             if (ModelState.IsValid)
             {
+                Bank.CreateAccount(account.EmailAddress, account.TypeOfAccount, account.Balance);
                 db.Accounts.Add(account);
                 db.SaveChanges();
                 return RedirectToAction("Index");

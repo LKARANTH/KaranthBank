@@ -11,7 +11,7 @@ namespace BedrockBank
        // private static List<Account> accounts = new List<Account>();
         public static  BankModel db = new BankModel();
 
-        public static Account CreateAccount(string emailAddress, int typeOfAccount,decimal amount)
+        public static Account CreateAccount(string emailAddress, AccountTypes typeOfAccount,decimal amount)
         {
             if (string.IsNullOrEmpty(emailAddress))
             {
@@ -38,9 +38,9 @@ namespace BedrockBank
             db.SaveChanges();
             return account;
         }
-        public static List<Account> GetAllAccounts()
+        public static List<Account> GetAllAccounts(string emailAddress)
         {
-            return db.Accounts.ToList();
+            return db.Accounts.Where (a => a.EmailAddress == emailAddress). ToList();
             
         }
         public static void Deposit(int accountNumber, decimal amount)
